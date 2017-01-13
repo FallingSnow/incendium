@@ -1,0 +1,42 @@
+@bgColor: darken(darkgrey, 45%);
+
+body {
+    font-family: Roboto;
+    margin: 0;
+    padding: 0;
+    color: #FAAF40;
+    background-color: @bgColor;
+    background-image: url("https://www.transparenttextures.com/patterns/maze-black.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    padding-bottom: 100px;
+}
+
+.header {
+    position: relative;
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.flex {
+    display: flex;
+
+    &-center {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    &-stretch-row {
+        align-items: stretch;
+        flex-direction: row;
+    }
+}
+
+.drop-shadow-container {
+    filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.5));
+}
+
+.navbar {
+    position: fixed !important;
+    box-shadow: none !important;
+    top: 0;
+}

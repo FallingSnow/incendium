@@ -1,0 +1,182 @@
+.TextContainer {
+    max-width: 1100px;
+}
+
+.SlideTab {
+    width: 30vw;
+    height: 300px;
+    background: grey;
+    transition: all 0.5s;
+    background-size: cover;
+
+    &-left {
+        transform: translateX(-5vw);
+
+        &:hover {
+            transform: translateX(0);
+        }
+    }
+}
+
+.WineSlider {
+    background-size: cover;
+    background-position: bottom;
+    padding: 40px 0 60px;
+    color: white;
+    background-blend-mode: overlay;
+    background-color: fade(black, 7%);
+
+    .display {
+        padding: 70px;
+
+        svg {
+            float: left;
+            width: 30%;
+            height: 600px;
+
+            image {
+                mask: url("#fade");
+            }
+        }
+
+        .description {
+            float: right;
+            width: 70%;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-shadow: 2px 1px 0 #4c4c4c;
+
+            .title {
+                font-family: 'Tangerine', cursive;
+                font-weight: normal;
+                font-size: 7vw;
+                margin: 10px 0;
+                text-align: center;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 90%;
+                    width: 20%;
+                    left: 50%;
+                    border-bottom: 1px solid white;
+                    transform: translateX(-50%);
+                }
+
+                .year {
+                    font-size: 10vw;
+                }
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .selector-menu-wrapper {
+        clear: both;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        text-align: center;
+        padding-top: 20px;
+
+        .arrow {
+            width: 160px;
+            height: 160px;
+            flex: 1;
+            font-size: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            .fa {
+                transition: transform 0.2s;
+            }
+
+            &:hover {
+                background-color: fade(grey, 20%);
+
+                .fa {
+                    transform: translateX(-10px);
+                }
+            }
+        }
+
+        .selector-wrapper {
+            @baseImgHeight: 240px;
+            @transformDistance: 8px;
+            @margin: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-end;
+            text-align: center;
+            overflow-x: hidden;
+            flex: 5;
+            height: @baseImgHeight + @transformDistance * 2 + @margin * 2;
+
+            .selector-inner-wrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-end;
+                height: 100%;
+                width: 100%;
+                transition: all 0.5s;
+            }
+
+            .selectable-container {
+                flex: 1 0 20%;
+
+                .selectable {
+                    width: 160px;
+                    height: 160px;
+                    text-align: center;
+                    position: relative;
+                    margin: 0 @margin;
+                    background-size: cover;
+                    border-radius: 5%;
+                    display: inline-block;
+                    background-image: url("~!file!../static/board.jpg");
+                    cursor: pointer;
+                    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+                    img {
+                        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        bottom: 10px;
+                        height: @baseImgHeight;
+                    }
+
+                    &:hover {
+                        transform: translateY(-@transformDistance);
+                        box-shadow: 0 6px 11px 1px black;
+
+                        img {
+                            transform: translate(-50%, -@transformDistance);
+                        }
+                    }
+                }
+
+                &.active .selectable {
+                    transform: translateY(-@transformDistance);
+                    box-shadow: 0 6px 11px 1px black;
+
+                    img {
+                        transform: translate(-50%, -@transformDistance);
+                    }
+                }
+            }
+        }
+    }
+}
